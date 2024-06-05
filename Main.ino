@@ -81,21 +81,26 @@ void connectWifi()
 
 }
 
+//音楽の再生
 void PlayMusic()
 {
 
 }
 
+//ゲーム画面のコード
 void PlayPinGame()
+{
+
+}
+
+//スタート画面に戻る
+void Exit()
 {
 
 }
 
 //ポインターを定義
 typedef void (*FunctionPointer)();
-
-//関数を格納
-
 
 void setup(void) 
 {
