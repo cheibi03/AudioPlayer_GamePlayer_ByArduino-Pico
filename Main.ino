@@ -9,8 +9,20 @@
 #define TFT_MOSI    19  // MOSI
 #define TFT_RST     22  // Reset 
 
+//ボタンのピン設定
+#define RIGH1_BUT
+#define RIGH2_BUT
+#define LEFT1_BUT
+#define LEFT2_BUT
+
 //SPI0をコンストラクタに指定する
 Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
+
+int SelectTab = 0;
+
+int OpenWindow = 0;
+
+String Starttab[3] = {"AudioPlay" , "GamePlay" , " moleskin-Com"};
 
 void setup(void) 
 {
@@ -21,24 +33,35 @@ void setup(void)
   
   tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
 
-  //テキスト表示
-  tft.setRotation(3);                         //画面回転
-  tft.setTextSize(3);                         //サイズ
-
-  tft.setCursor(0, 20);                      //カーソル位置                      
-  tft.setTextColor(ST77XX_RED);              //赤
-  tft.printf("TAMANEGI\n");
-
-  tft.setTextColor(ST77XX_GREEN);            //緑
-  tft.printf("TAMANEGI\n");
-
-  tft.setTextColor(ST77XX_BLUE);             //青
-  tft.printf("TAMANEGI\n");
-
-  tft.setTextColor(ST77XX_YELLOW);           //黄
-  tft.printf("TAMANEGI\n");
+  //ボタンの設定
+  PinMode(RIGH1_BUT,INPUT);
+  PinMode(RIGH2_BUT,INPUT);
+  PinMode(LEFT1_BUT,INPUT);
+  PinMode(LEFT2_BUT,INPUT);
 }
 
 void loop()
 {
+}
+
+void startView()
+{
+  //音楽　ゲーム　モールス通信
+  if(digitalRead(LEFT1_BUT) == HIGH)
+  {
+    if(SelectTab <= 0){
+      SelectTab = 3;
+    }else{
+      SelectTab++;
+    }
+  }
+  
+  if(digitalRead(LEFT2_BUT) == HIGH)
+  {
+    if(SelectTab >= 3){
+      SelectTab = 0;
+    }else{
+      SelectTab--;
+    }
+  }
 }
