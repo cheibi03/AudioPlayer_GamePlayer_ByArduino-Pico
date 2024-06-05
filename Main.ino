@@ -68,6 +68,10 @@ typedef void (*FunctionPointer)();
 void setup(void) 
 {
   Serial.begin(9600);
+
+  // 関数ポインタの配列に関数を格納
+  FunctionPointer functions[] = {startView};
+
   
   SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
   SPI.setSCK(TFT_SCLK);
@@ -99,6 +103,7 @@ void setup(void)
 
 void loop()
 {
-    myDFPlayer.play(1); // 1番目の曲を再生
+   // myDFPlayer.play(1); // 1番目の曲を再生
+   //functions[1]();//1つ目のポインタ関数を実行
 }
 
