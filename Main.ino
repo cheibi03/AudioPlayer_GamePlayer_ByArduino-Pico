@@ -60,31 +60,35 @@ void startView()
   }
 }
 
+//モールス送信
 void CommunicationView()
 {
   //音楽　ゲーム　モールス通信
-  if(digitalRead(LEFT1_BUT) == HIGH)
-  {
-    if(SelectTab <= 0){
-      SelectTab = 3;
-    }else{
-      SelectTab++;
-    }
-  }
-  
-  if(digitalRead(LEFT2_BUT) == HIGH)
-  {
-    if(SelectTab >= 3){
-      SelectTab = 0;
-    }else{
-      SelectTab--;
-    }
-  }
-
   if(digitalRead(RIGH1_BUT) == HIGH)
   {
-    OpenWindow = SelectTab + 1;
+    //•送信
   }
+  
+  if(digitalRead(RIGH2_BUT) == HIGH)
+  {
+    //-送信
+  }
+}
+
+//ネット接続またはクライアント作成
+void connectWifi()
+{
+
+}
+
+void PlayMusic()
+{
+
+}
+
+void PlayPinGame()
+{
+
 }
 
 //ポインターを定義
