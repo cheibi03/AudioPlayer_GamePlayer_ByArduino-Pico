@@ -24,26 +24,7 @@ int OpenWindow = 0;
 
 String Starttab[3] = {"AudioPlay" , "GamePlay" , " moleskin-Com"};
 
-void setup(void) 
-{
-  SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
-  SPI.setSCK(TFT_SCLK);
-
-  tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
-  
-  tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
-
-  //ボタンの設定
-  PinMode(RIGH1_BUT,INPUT);
-  PinMode(RIGH2_BUT,INPUT);
-  PinMode(LEFT1_BUT,INPUT);
-  PinMode(LEFT2_BUT,INPUT);
-}
-
-void loop()
-{
-}
-
+//実行関数
 void startView()
 {
   //音楽　ゲーム　モールス通信
@@ -70,3 +51,30 @@ void startView()
     OpenWindow = SelectTab + 1;
   }
 }
+
+//ポインターを定義
+typedef void (*FunctionPointer)();
+
+//関数を格納
+
+
+void setup(void) 
+{
+  SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
+  SPI.setSCK(TFT_SCLK);
+
+  tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
+  
+  tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
+
+  //ボタンの設定
+  PinMode(RIGH1_BUT,INPUT);
+  PinMode(RIGH2_BUT,INPUT);
+  PinMode(LEFT1_BUT,INPUT);
+  PinMode(LEFT2_BUT,INPUT);
+}
+
+void loop()
+{
+}
+
