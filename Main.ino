@@ -59,6 +59,33 @@ void startView()
   }
 }
 
+void CommunicationView()
+{
+  //音楽　ゲーム　モールス通信
+  if(digitalRead(LEFT1_BUT) == HIGH)
+  {
+    if(SelectTab <= 0){
+      SelectTab = 3;
+    }else{
+      SelectTab++;
+    }
+  }
+  
+  if(digitalRead(LEFT2_BUT) == HIGH)
+  {
+    if(SelectTab >= 3){
+      SelectTab = 0;
+    }else{
+      SelectTab--;
+    }
+  }
+
+  if(digitalRead(RIGH1_BUT) == HIGH)
+  {
+    OpenWindow = SelectTab + 1;
+  }
+}
+
 //ポインターを定義
 typedef void (*FunctionPointer)();
 
@@ -70,7 +97,7 @@ void setup(void)
   Serial.begin(9600);
 
   // 関数ポインタの配列に関数を格納
-  FunctionPointer functions[] = {startView};
+  FunctionPointer functions[] = {startView,CommunicationView};
 
   
   SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
