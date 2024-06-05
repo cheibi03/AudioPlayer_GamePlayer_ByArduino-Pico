@@ -64,4 +64,9 @@ void startView()
       SelectTab--;
     }
   }
+
+  if(digitalRead(RIGH1_BUT) == HIGH)
+  {
+    OpenWindow = SelectTab + 1;
+  }
 }
