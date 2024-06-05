@@ -29,7 +29,8 @@ DFPlayerMini_Fast myDFPlayer;
 
 int SelectTab = 0;
 int OpenWindow = 0;
-String Starttab[3] = {"AudioPlay" , "GamePlay" , " moleskin-Com"};
+String Starttab[] = {"AudioPlay" , "GamePlay" , " moleskin-Com"};
+String MusicList[] = {"うい麦畑"};
 
 //実行関数
 void startView()
