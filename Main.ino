@@ -12,10 +12,10 @@
 #define TFT_RST     22  // Reset 
 
 //ボタンのピン設定
-#define RIGH1_BUT
-#define RIGH2_BUT
-#define LEFT1_BUT
-#define LEFT2_BUT
+#define LEFT1_BUT 6
+#define LEFT2_BUT 7
+#define RIGH1_BUT 8
+#define RIGH2_BUT 9
 
 //DFPlayerのピン設定
 #define DFPLAYER_RX_PIN 0
@@ -143,4 +143,3 @@ void loop()
    // myDFPlayer.play(1); // 1番目の曲を再生
    //functions[1]();//1つ目のポインタ関数を実行
 }
-
