@@ -1,10 +1,10 @@
 //SPI通信の際にsetTXがライブラリー内にないというエラーが起こり、対処法がわからなかったためMicroPythonに移行
 
-/*#include <Arduino.h>
+#include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
-#include <DFPlayerMini_Fast.h>
-#include <SPI.h>
+#include <PicoSoftwareSerial.h>
+#include <DFRobotDFPlayerMini.h>
 
 //ピン番号設定
 #define TFT_DC      28  // DC
@@ -27,7 +27,9 @@
 Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
 
 //DFPlayerを定義
-DFPlayerMini_Fast myDFPlayer;
+SoftwareSerial mySoftwareSerial(4, 5); 
+DFRobotDFPlayerMini myDFPlayer;
+void printDetail(uint8_t type, int value);
 
 int SelectTab = 0;
 int OpenWindow = 0;
@@ -106,14 +108,11 @@ typedef void (*FunctionPointer)();
 
 void setup(void) 
 {
+  mySoftwareSerial.begin(9600);
   Serial.begin(9600);
 
   // 関数ポインタの配列に関数を格納
   FunctionPointer functions[] = {startView,CommunicationView};
-
-  
-  SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
-  SPI.setSCK(TFT_SCLK);
 
   tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
   
@@ -123,9 +122,10 @@ void setup(void)
   Serial1.begin(9600, SERIAL_8N1, DFPLAYER_RX_PIN, DFPLAYER_TX_PIN);
 
   // DFPlayer Miniを初期化
-  if (!myDFPlayer.begin(Serial1)) {
-    Serial.println("DFPlayer Mini initialization failed!");
-    while (true);
+  if (!myDFPlayer.begin(mySoftwareSerial)) {
+    while (true) {
+      delay(0); // Code to compatible with ESP8266 watch dog.
+    }
   }
 
   Serial.println("DFPlayer Mini initialized.");
@@ -145,4 +145,6 @@ void loop()
    // myDFPlayer.play(1); // 1番目の曲を再生
    //functions[1]();//1つ目のポインタ関数を実行
 }
-*/
+
+void printDetail(uint8_t type, int value) {
+}
