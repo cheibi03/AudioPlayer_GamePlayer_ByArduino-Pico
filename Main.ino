@@ -1,4 +1,6 @@
-#include <Arduino.h>
+//SPI通信の際にsetTXがライブラリー内にないというエラーが起こり、対処法がわからなかったためMicroPythonに移行
+
+/*#include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <DFPlayerMini_Fast.h>
@@ -143,3 +145,4 @@ void loop()
    // myDFPlayer.play(1); // 1番目の曲を再生
    //functions[1]();//1つ目のポインタ関数を実行
 }
+*/
