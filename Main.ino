@@ -110,7 +110,7 @@ void setup(void)
   Serial.begin(9600);
 
   // 関数ポインタの配列に関数を格納
-  FunctionPointer functions[] = {startView,CommunicationView};
+  FunctionPointer functions[] = {startView,PlayMusic,PlayPinGame,CommunicationView};
 
   tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
   
