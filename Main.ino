@@ -1,5 +1,3 @@
-//SPI通信の際にsetTXがライブラリー内にないというエラーが起こり、対処法がわからなかったためMicroPythonに移行
-
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
