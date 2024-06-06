@@ -116,9 +116,6 @@ void setup(void)
   
   tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
 
-  
-  Serial1.begin(9600, SERIAL_8N1, DFPLAYER_RX_PIN, DFPLAYER_TX_PIN);
-
   // DFPlayer Miniを初期化
   if (!myDFPlayer.begin(mySoftwareSerial)) {
     while (true) {
@@ -132,10 +129,10 @@ void setup(void)
   myDFPlayer.volume(20);
 
   //ボタンの設定
-  PinMode(RIGH1_BUT,INPUT);
-  PinMode(RIGH2_BUT,INPUT);
-  PinMode(LEFT1_BUT,INPUT);
-  PinMode(LEFT2_BUT,INPUT);
+  pinMode(RIGH1_BUT,INPUT);
+  pinMode(RIGH2_BUT,INPUT);
+  pinMode(LEFT1_BUT,INPUT);
+  pinMode(LEFT2_BUT,INPUT);
 }
 
 void loop()
