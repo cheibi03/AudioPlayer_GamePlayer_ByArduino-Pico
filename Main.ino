@@ -25,7 +25,7 @@
 Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
 
 //DFPlayerを定義
-SoftwareSerial mySoftwareSerial(4, 5); 
+SoftwareSerial mySoftwareSerial(DFPLAYER_RX_PIN, DFPLAYER_TX_PIN); 
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
 
