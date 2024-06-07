@@ -32,7 +32,7 @@ void printDetail(uint8_t type, int value);
 int SelectTab = 0;
 int OpenWindow = 0;
 String Starttab[] = {"AudioPlay" , "GamePlay" , " moleskin-Com"};
-String MusicList[] = {"うい麦畑"};
+String MusicList[] = {"musicname0001"};
 
 //実行関数
 void startView()
