@@ -101,6 +101,8 @@ bool Exit()
   if(digitalRead(RIGH1_BUT) == HIGH && digitalRead(RIGH2_BUT) == HIGH && digitalRead(LRFT1_BUT) == HIGH && digitalRead(LEFT2_BUT) == HIGH){
     OpenWindow = 0;
     return true;
+  }else{
+    return false;
   }
 }
 
