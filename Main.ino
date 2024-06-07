@@ -18,8 +18,8 @@
 #define RIGH2_BUT 9
 
 //DFPlayerのピン設定
-#define DFPLAYER_RX_PIN 0
-#define DFPLAYER_TX_PIN 1
+#define DFPLAYER_RX_PIN 4
+#define DFPLAYER_TX_PIN 5
 
 //SPI0をコンストラクタに指定する
 Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
