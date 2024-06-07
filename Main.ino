@@ -116,8 +116,8 @@ void setup(void)
   FunctionPointer functions[] = {startView,PlayMusic,PlayPinGame,CommunicationView};
 
   tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
-  
   tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
+  tft.setRotation(1);
 
   // DFPlayer Miniを初期化
   if (!myDFPlayer.begin(mySoftwareSerial)) {
