@@ -22,7 +22,7 @@
 #define DFPLAYER_TX_PIN 5
 
 //SPI0をコンストラクタに指定する
-Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
+Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
 //DFPlayerを定義
 SoftwareSerial mySoftwareSerial(DFPLAYER_RX_PIN, DFPLAYER_TX_PIN); 
