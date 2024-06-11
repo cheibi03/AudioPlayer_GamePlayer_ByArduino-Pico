@@ -3,6 +3,7 @@
 #include <Adafruit_ST7735.h>
 #include <PicoSoftwareSerial.h>
 #include <DFRobotDFPlayerMini.h>
+#include <SPI.h>
 
 //ピン番号設定
 #define TFT_DC      28  // DC
@@ -22,10 +23,10 @@
 #define DFPLAYER_TX_PIN 5
 
 //SPI0をコンストラクタに指定する
-Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+Adafruit_ST7735 tft = Adafruit_ST7735(&SPI, TFT_CS, TFT_DC, TFT_RST);
 
 //DFPlayerを定義
-SoftwareSerial mySoftwareSerial(DFPLAYER_RX_PIN, DFPLAYER_TX_PIN); 
+SoftwareSerial mySoftwareSerial(DFPLAYER_RX_PIN, DFPLAYER_TX_PIN);  
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
 
@@ -98,7 +99,7 @@ void PlayPinGame()
 //スタート画面に戻る
 bool Exit()
 {
-  if(digitalRead(RIGH1_BUT) == HIGH && digitalRead(RIGH2_BUT) == HIGH && digitalRead(LRFT1_BUT) == HIGH && digitalRead(LEFT2_BUT) == HIGH){
+  if(digitalRead(RIGH1_BUT) == HIGH && digitalRead(RIGH2_BUT) == HIGH && digitalRead(LEFT1_BUT) == HIGH && digitalRead(LEFT2_BUT) == HIGH){
     OpenWindow = 0;
     return true;
   }else{
@@ -117,9 +118,18 @@ void setup(void)
   // 関数ポインタの配列に関数を格納
   FunctionPointer functions[] = {startView,PlayMusic,PlayPinGame,CommunicationView};
 
-  tft.initR(INITR_BLACKTAB);                //Init ST7735S初期化
+  SPI.setTX(TFT_MOSI);                        //H/W SPI 設定
+  SPI.setSCK(TFT_SCLK);
+
+  tft.initR(INITR_BLACKTAB);
+  tft.setRotation(1);                //Init ST7735S初期化
   tft.fillScreen(ST77XX_BLACK);               //背景の塗りつぶし
-  tft.setRotation(1);
+
+  tft.setTextSize(3);                         //サイズ
+
+  tft.setCursor(0, 10);                       //カーソル位置                      
+  tft.setTextColor(ST77XX_GREEN);             //緑
+  tft.printf("TAMANEGI\n");
 
   // DFPlayer Miniを初期化
   if (!myDFPlayer.begin(mySoftwareSerial)) {
@@ -142,7 +152,7 @@ void setup(void)
 
 void loop()
 {
-   // myDFPlayer.play(1); // 1番目の曲を再生
+   myDFPlayer.play(1); // 1番目の曲を再生
    //functions[1]();//1つ目のポインタ関数を実行
 }
 
